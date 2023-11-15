@@ -1,23 +1,84 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import layout from '@/layout'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: '/firstTest',
+    component: layout,
+    children:[
+      {
+        path:'/firstTest',
+        name:'firstTest',
+        component:()=>import('@/views/firstTest'),
+        meta: { title:false,index:0 }
+      },
+    ]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/firstTest',
+    component: layout,
+    children:[
+      {
+        path:'/firstTest',
+        name:'firstTest',
+        component:()=>import('@/views/firstTest'),
+        meta: { title:'第一题Promise', index:1}
+      },
+    ]
+  },
+  {
+    path: '/secondTest',
+    component: layout,
+    children:[
+      {
+        path:'/secondTest',
+        name:'secondTest',
+        component:()=>import('@/views/secondTest'),
+        meta: { title:'第二题VerticalCenter',index:2}
+      },
+    ]
+  },
+  {
+    path: '/thirdTest',
+    component: layout,
+    children:[
+      {
+        path:'/thirdTest',
+        name:'thirdTest',
+        component:()=>import('@/views/thirdTest'),
+        meta: { title:'第三题MixHeight',index:3}
+      },
+    ]
+  },
+  {
+    path: '/fourthTest',
+    component: layout,
+    children:[
+      {
+        path:'/fourthTest',
+        name:'fourthTest',
+        component:()=>import('@/views/fourthTest'),
+        meta: { title:'第四题Articlesteps',index:4 }
+      },
+    ]
+  },
+  {
+    path: '/fifthTest',
+    component: layout,
+    children:[
+      {
+        path:'/fifthTest',
+        name:'fifthTest',
+        component:()=>import('@/views/fifthTest'),
+        meta: { title:'第五题Password',index:5 }
+      },
+    ]
+  },
+
 ]
 
 const router = new VueRouter({
